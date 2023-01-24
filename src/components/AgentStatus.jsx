@@ -5,13 +5,23 @@ import Data from './Data.json';
 
 
 const AgentStatus = (props) => {
+
+    // Total number of agents
     const allAgents = Data.results.filter(data => data.id !== "000").length;
+
+    // Total number of active agents
     let activeAgents = 0;
     Data.results.map(data => data.status === "active" && data.id !== "000" ? activeAgents +=1: null);
+
+    // Total number of disconnected agents
     let disconnectedAgents =0;
     Data.results.map(data => data.status === "disconnected" ? disconnectedAgents +=1: null);
+
+    // Total number of pending agents
     let pendingAgents = 0;
     Data.results.map(data => data.status === "pending" ? pendingAgents+=1: null);
+    
+    // Total number of never connected agents
     let neverConAgents =0;
     Data.results.map(data=> data.status=== "never_connected"? neverConAgents: null)
 
